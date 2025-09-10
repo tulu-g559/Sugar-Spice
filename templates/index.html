@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sugar & Spice 🍭🔥</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🍭🔥 Sugar & Spice 🔥🍭</h1>
+    <p class="subtitle">Get roasted or complimented with AI magic ✨</p>
+
+    <div class="tabs">
+      <button id="roastTab" class="active">🔥 Roast</button>
+      <button id="complimentTab">🍭 Compliment</button>
+    </div>
+
+    <textarea id="userInput" placeholder="Enter a name or short bio..."></textarea>
+    <button id="generateBtn">Generate</button>
+
+    <div id="output" class="card">Your result will appear here...</div>
+  </div>
+
+  <script>
+    const roastTab = document.getElementById("roastTab");
+    const complimentTab = document.getElementById("complimentTab");
+    const generateBtn = document.getElementById("generateBtn");
+    const output = document.getElementById("output");
+    const userInput = document.getElementById("userInput");
+
+    let mode = "roast"; // default
+
+    roastTab.onclick = () => {
+      mode = "roast";
+      roastTab.classList.add("active");
+      complimentTab.classList.remove("active");
+    };
+
+    complimentTab.onclick = () => {
+      mode = "compliment";
+      complimentTab.classList.add("active");
+      roastTab.classList.remove("active");
+    };
+
+    generateBtn.onclick = async () => {
+      output.innerText = "✨ Generating...";
+      const response = await fetch("/generate", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({input: userInput.value, mode: mode})
+      });
+      const data = await response.json();
+      output.innerText = data.output;
+    };
+  </script>
+</body>
+</html>

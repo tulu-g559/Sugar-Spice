@@ -39,7 +39,7 @@
     <textarea id="userInput" placeholder="Enter a name or short bio..."></textarea>
     <button id="generateBtn">Generate</button>
 
-    <div id="output" class="card">Spice or Sugar??...</div>
+    <div id="output" class="card">❤️‍🔥Spice or Sugar🍬??...</div>
   </div>
 
   <script>
@@ -62,6 +62,22 @@
       complimentTab.classList.add("active");
       roastTab.classList.remove("active");
     };
+
+    function markdownToHtml(md) {
+    // Bold **text**
+    md = md.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+    // Italic *text*
+    md = md.replace(/(^|[^*])\*(.*?)\*([^*]|$)/g, '$1<em>$2</em>$3');
+    // Unordered lists
+    md = md.replace(/(^|\n)[*-]\s+(.*)/g, '$1<li>$2</li>');
+    // Wrap <li> in <ul> if any
+    if (md.includes('<li>')) {
+        md = md.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+    }
+    // Line breaks
+    md = md.replace(/\n/g, '<br>');
+    return md;
+    }
 
     generateBtn.onclick = async () => {
       output.innerText = "✨ Generating...";

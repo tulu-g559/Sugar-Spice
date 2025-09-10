@@ -24,6 +24,8 @@ def generate():
                 Keep it playful, light, and human — like a joke you'd make in conversation. 
                 Do not explain your reasoning, give options, or add extra notes. 
                 Person: {user_input}
+                use emojis in the output.
+
 """
     elif mode == "compliment":
         prompt = f"""
@@ -31,6 +33,7 @@ def generate():
                 Make it natural, warm, and slightly witty — like something you'd actually say to make them smile. 
                 Do not explain your reasoning or give options. 
                 Person: {user_input}
+                use emojis in the output
 
         """
 

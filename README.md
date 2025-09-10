@@ -38,3 +38,19 @@ Just enter a name or a short bio, and let the AI sprinkle some magic ✨
 ```
     python app.py
 ```
+
+
+🧑‍💻 How It Works
+------------------
+
+1.  Type a **name** or short description in the input box.
+2.  Pick your vibe → **Roast** or **Compliment**.
+3.  Hit **Generate** → The app talks to Gemini and gives you a result.
+    
+
+🌟 Future Ideas
+---------------
+
+*   🕹️ Add **voice roast/compliment** with TTS.
+*   📱 Turn into a fun mobile app with React Native.
+*   🎉 Multiplayer roast battles 🤺
